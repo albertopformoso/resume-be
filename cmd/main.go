@@ -1,8 +1,12 @@
 package main
 
 import (
+	"log"
 	"os"
+	"strings"
 
+	"github.com/albertopformoso/resume-be/internal/db"
+	"github.com/albertopformoso/resume-be/internal/model"
 	"github.com/albertopformoso/resume-be/internal/router"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
@@ -18,7 +22,20 @@ func main() {
 		port = "8080"
 	}
 
-	// TODO: Implement Driver selection
+	// Driver selection implementation
+	dbDriver := os.Getenv("DRIVER")
+	log.Printf("Selected driver: %q\n", dbDriver)
+
+	var driver model.DBDriver
+	switch strings.ToLower(dbDriver) {
+	case "postgres", "pg":
+		driver = db.DriverPG
+	default:
+		driver = db.DriverUndefined
+	}
+
+	database := db.NewDB(driver)
+	log.Println(database) // temporary line to dismiss errors
 
 	// TODO: Initialize repository
 
