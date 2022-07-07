@@ -1,0 +1,25 @@
+id,profile_id,position,company,time,description,img,created_at,updated_at
+1,1,Assistant Researcher in Robotics,Universidad Panamericana,Aug 2018 - Aug 2019,"Programming and simulation in MATLAB for control systems modeling for developing two projects:
+1. An automated vision control mini-car with raspberry pi and pi cam, and MATLAB code running remotely via wifi the vectors of the objects were calculated in real time and the mini-car drove through a controlled space.
+2. A vital signs recognition by camera, In this project with a DSLR camera the chest movement due to breathing was recorded and later with MATLAB the respiration curves were obtained to do calculations and check some vital sings such as blood oxygenation, respiratory rate, and heart rate.",,2022-07-01 14:32:54.377456,
+2,1,Quality Assurance Intern,Abbott - Internship,Jul 2019 - Jul 2020,"• Report Quality Trends
+• Weekly Compliance Reports
+• Monthly Quality Metrics
+• Report Costs of Poor Quality Trends
+On my stay as an intern I developed some macros with excel to automate weekly reports and also elaborate some auto-updatable templates for measuring the quality metric systems health.",,2022-07-01 14:32:54.377456,
+3,1,Python Software Engineer,Meru - Full time,Nov 2020 - Apr 2021,"• Web Scraping e-commerce sites with Scrapy, Selenium and BS4 for product intelligence
+• Work with requests and urllib3 for APIs data extraction
+• Use Natural Language Processing (NLP) to generate smart e-commerce product tags
+• Modeling Time series for forecasting container prices
+• Help the business to select the best products for the marketplace with Machine Learning Techniques
+• Create microservices with Flask for internal tools",,2022-07-01 14:32:54.377456,
+4,1,Python Developer,Globant - Full time,Apr 2021 - Jul 2021,"• Develop backend code with Flask and Django frameworks for clients
+• Write effective and scalable python code
+• Test driven development with Django
+• Build RESTful APIs with Flask and Django",,2022-07-01 14:32:54.377456,
+5,1,CloudOps Engineer,Globant - Full time,Jul 2021 - May 2022,"Client: Google Inc.
+• Work as part of Google's team on the Delivery Center as a Cloud Engineer consultant expert in Google Cloud Platform services
+• Deliver foundational GCP resources and technical design documents
+• Give training and deep dives to customers about GCP services
+• Application modernization of legacy services or build cloud-native applications using Google Cloud's end-to-end solutions",,2022-07-01 14:32:54.377456,
+6,1,Site Reliability Engineer,Wizeline - Full time,May 2022 - Present,DevOps Engineer,,2022-07-01 14:32:54.377456,

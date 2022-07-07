@@ -1,0 +1,12 @@
+id,profile_id,institution,degree,time,description,img,created_at,updated_at
+1,1,"Universidad La Salle, A.C.",High School,2012 - 2015,,,2022-07-01 14:32:54.377456,
+2,1,Universidad Panamericana,"Bachelor's Degree Field Of Study Electronic Engineering, Robotics and Mechatronics",2016 - 2020,"Mechatronics Engineering
+Integration of both mechanical, electrical and electronic sciences and technologies with artificial intelligence, for the design, creation and innovation of intelligent products and systems",,2022-07-01 14:32:54.377456,
+3,1,Ironhack,"Bootcamp, Data Analytics",Oct 2020 - Sep 2020,"Git & Version Control, MySQL, Data Wrangling and Cleaning with Pandas, APIS and Web Scrapping, Exploratory Data Visual, Storytelling through data visualization, Business Intelligence, Applied Machine Learning, Scikit-Learn",,2022-07-01 14:32:54.377456,
+4,1,Universidad Panamericana,"Diploma, Data Science",2020 - 2021,"• Business Intelligence and Solutions of Data Science
+• Machine Learning
+• Analysis of Large Volumes of Data
+• Business Strategies Based on Data Science",,2022-07-01 14:32:54.377456,
+5,1,Universidad Panamericana,"Specialty, Engineering and Project Management",2020 - 2021,"With this specialty I develop myself in consulting practices, integral advising and project management in a successful way. To carry out adequate planning of technical and human resources, and to ensure the viability of projects and their results by executing effective business plans.
+To successfully apply advanced project management techniques, teamwork, negotiation, conflict resolution and leadership in groups that develop projects within organizations.",,2022-07-01 14:32:54.377456,
+6,1,Ironhack,"Bootcamp, Web Development",Apr 2021 - Jun 2021,"JavaScript, Express framework, NodeJS, MongoDB, React, HTML5, CSS3",,2022-07-01 14:32:54.377456,

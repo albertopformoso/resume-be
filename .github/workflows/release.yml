@@ -1,0 +1,75 @@
+name: ci release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  ci:
+    uses: ./.github/workflows/ci.yml
+
+  release:
+    name: release / create github release
+    needs: [ ci ]
+    runs-on: ubuntu-latest
+    if: success() && startsWith(github.ref_name, 'v') && github.ref_type == 'tag' && github.event_name == 'push'
+    env:
+      FLAG: ${{ needs.check_releases.outputs.FLAG }}
+    outputs:
+      RELEASE_URL: ${{ steps.create_release.outputs.upload_url }}
+      FLAG: ${{ steps.release_check.outputs.flag }}
+    steps:
+      - uses: actions/checkout@master
+      - name: check if release exists
+        id: release_check
+        run: |
+          content=$(curl -H "Accept: application/vnd.github+json" -H "Content-Type: application/json" https://api.github.com/repos/albertopformoso/resume-be/releases)
+          releases=$(jq -r '.[].name' <<<"$content")
+          if [[ $releases == *"${{ github.ref_name }}"* ]]; then
+            echo "::set-output name=flag::true"
+          else
+            echo "::set-output name=flag::false"
+          fi
+      - name: create release
+        if: steps.release_check.outputs.flag == 'false'
+        uses: actions/create-release@master
+        id: create_release
+        with:
+          draft: false
+          prerelease: true
+          release_name: ${{ github.ref_name }}
+          tag_name: ${{ github.ref_name }}
+          body_path: CHANGELOG.md
+        env:
+          GITHUB_TOKEN: ${{ github.token }}  # ${{ secrets.PAT_TOKEN }}
+
+  build_artifact:
+    needs: [ release ]
+    strategy:
+      matrix:
+        go-version: [ 1.18.x ]
+        platform: [ ubuntu-latest ]
+    name: build & upload artifacts
+    runs-on: ${{ matrix.platform }}
+    if: needs.release.outputs.FLAG == 'false'
+    steps:
+    - name: setup go
+      uses: actions/setup-go@v3
+      with:
+        go-version: ${{ matrix.go-version }}
+    - name: checkout repository
+      uses: actions/checkout@v3
+    - name: build artifacts
+      run: |
+        go build -o bin/app ./cmd/...
+        zip bin.zip ./bin/app
+    - name: upload linux artifact
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      with:
+        upload_url: ${{ needs.release.outputs.RELEASE_URL }}
+        asset_path: ./bin.zip
+        asset_name: app
+        asset_content_type: application/zip

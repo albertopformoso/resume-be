@@ -1,0 +1,26 @@
+name: cd
+
+on:
+  workflow_run:
+    workflows: [ "ci release" ]
+    types:
+      - completed
+    branch: [ master ]
+
+jobs:
+  deploy:
+    name: "deploy to heroku"
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.workflow_run.head_branch }} 
+      - name: Terraform validate
+        run: terraform validate
+      - name: Terraform init - apply
+        run: |
+          cd terraform
+          export HEROKU_API_KEY=${{ secrets.HEROKU_API_KEY }} HEROKU_EMAIL=${{ secrets.HEROKU_EMAIL }}
+          terraform init -backend-config="conn_str=${{ secrets.TERRAFORM_BE }}"
+          terraform apply -var build_version=${{ github.event.workflow_run.head_branch }} --auto-approve
