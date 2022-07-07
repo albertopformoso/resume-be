@@ -13,6 +13,8 @@ services:
     image: go-alpine
     env_file:
       - ./../.env
+    links:
+      - "db:database"
   db:
     container_name: postgres
     image: postgres:alpine3.16
